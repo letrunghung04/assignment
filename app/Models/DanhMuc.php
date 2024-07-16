@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
+class DanhMuc extends Model
+{
+    use HasFactory;
+    public function getList(){
+        $listDanhMuc = DB::table('danh_mucs')
+        ->orderBy('id', 'ASC')
+        ->get();
+        return $listDanhMuc;
+    }
+    public function createDanhMuc($data){
+        DB::table('danh_mucs')->insert($data);
+    }
+}
