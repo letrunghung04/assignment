@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
+use App\Models\DanhMuc;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
 
@@ -15,9 +16,9 @@ class SanPhamController extends Controller
     }
     public function index()
     {
-        $listSanPham = SanPham::get();
         $title = "Danh sách sản phẩm";
-        return view('admins/sanpham/index', compact('listSanPham','title'));
+        $listSanPham = SanPham::get();
+        return view('admins.sanpham.index', compact('title','listSanPham'));
     }
 
     /**
@@ -25,8 +26,9 @@ class SanPhamController extends Controller
      */
     public function create()
     {
+        $listDanhMuc = DanhMuc::get();
         $title = "Thêm sản phẩm";
-        return view('admins.sanpham.create', compact('title'));
+        return view('admins.sanpham.create', compact('title', 'listDanhMuc'));
     }
 
     /**
@@ -34,10 +36,16 @@ class SanPhamController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->isMethod('POST')) {
+        if($request->isMethod('POST')){
             $params = $request->except('_token');
-            $this->san_phams->createProduct($params);
-            return redirect()->route('san_pham.index')->with('success', 'Thêm sản phẩm thành công');
+            if($request->hasFile('hinh_anh')){
+                $filename = $request->file('hinh_anh')->store('uploads/sanpham','public');
+            } else{
+                $filename = null;
+            };
+            $params['hinh_anh'] = $filename;
+            SanPham::create($params);
+            return redirect()->route('san_pham.index')->with('success', 'Thêm sản phầm thành công!');
         }
     }
 

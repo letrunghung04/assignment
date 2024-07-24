@@ -2,21 +2,27 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Database\Eloquent\SoftDeletes;
+
+// use Illuminate\Support\Facades\DB;
 
 class SanPham extends Model
 {
-    use HasFactory;
-    public function getList(){
-        $listSanPham = DB::table('san_phams')
-        ->orderBy('id', 'ASC')
-        ->get();
-        return $listSanPham;
-    }
-
-    public function createProduct($data){
-        DB::table('san_phams')->insert($data);
-    }
+    // use HasFactory;
+    // use SoftDeletes;
+    protected $table = 'san_phams';
+    protected $fillable = [
+        'ten_san_pham',
+        'gia_san_pham',
+        'gia_khuyen_mai',
+        'hinh_anh',
+        'so_luong',
+        'luot_xem',
+        'ngay_nhap',
+        'mo_ta',
+        'trang_thai',
+        'danh_muc_id',
+    ];
 }

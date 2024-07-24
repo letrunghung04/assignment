@@ -38,4 +38,5 @@
         @include('admins.blocks.footer')
     </footer>
 </body>
+@yield('js')
 </html>
