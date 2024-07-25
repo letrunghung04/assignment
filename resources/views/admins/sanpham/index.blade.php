@@ -33,17 +33,17 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Stt</th>
-                    <th>Hình ảnh</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Giá</th>
-                    <th>Giá khuyến mãi</th>
-                    <th>Số lượng</th>
-                    <th>Lượt xem</th>
-                    <th>Ngày nhập</th>
-                    <th>Mô tả</th>
-                    <th>Trạng thái</th>
-                    <th style="width: 1px;" class="text-nowrap">
+                    <th class="vertical">Stt</th>
+                    <th class="vertical">Hình ảnh</th>
+                    <th class="vertical">Tên sản phẩm</th>
+                    <th class="vertical">Giá</th>
+                    <th class="vertical">Giá khuyến mãi</th>
+                    <th class="vertical">Số lượng</th>
+                    <th class="vertical">Lượt xem</th>
+                    <th class="vertical">Ngày nhập</th>
+                    <th class="vertical">Mô tả</th>
+                    <th class="vertical">Trạng thái</th>
+                    <th style="width: 1px;" class="text-nowrap vertical">
                         <a style="width: 100%;" class="btn btn-success btn-sm" href="{{ route('san_pham.create') }}">Thêm</a>
                     </th>
                 </tr>
@@ -62,9 +62,8 @@
                         <td class="vertical">{{ $item->mo_ta }}</td>
                         <td class="vertical">{{ $item->trang_thai == 0 ? 'Hết hàng' : 'Còn hàng' }}</td>
                         <td class="cnang" style="width: 1px;" class="text-nowrap">
-                            <a class="btn btn-primary btn-sm" href="">Xem</a>
-                            <a class="btn btn-warning" href="{{route('san_pham.edit', $item->id)}}">Sửa</a>
-                            <form action="{{ route('san_pham.destroy', $item->id) }}" method="POST"
+                            <a class="btn btn-warning btn-sm" style="margin: 10px; margin-top: 20px;" href="{{route('san_pham.edit', $item->id)}}">Sửa</a>
+                            <form style="margin: 10px" action="{{ route('san_pham.destroy', $item->id) }}" method="POST"
                                 class="d-inline" onsubmit="return confirm('Bạn có đồng ý xóa không?')">
                                 @csrf
                                 @method('DELETE')

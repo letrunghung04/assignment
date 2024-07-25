@@ -3,18 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    {{-- những thư viện dùng chung cho toàn bộ dự án mới được phép đặt ở đây --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('lib/bootstrap.min.css')}}">
+    <script src="{{asset('lib/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('lib/angular.min.js')}}"></script>
+    <script src="{{asset('lib/angular-route.js')}}"></script>
+    <script src="{{asset('lib/font-fontawesome-ae333ffef2.js')}}"></script>
     @yield('css')
+    <style>
+        * {
+            font-family: "Times New Roman", Times, serif;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <header>
-        @include('clients.blocks.header')
+        @include('clients.blocks.headerr')
     </header>
     <main>
         <aside>
-            @include('clients.blocks.sidebar')
+            @include('clients.blocks.sidebarr')
         </aside>
         <div class="content">
             {{-- $yield để chỉ định section có tên trong yield được hiển thị --}}
@@ -22,7 +35,7 @@
         </div>
     </main>
     <footer>
-        @include('clients.blocks.footer')
+        @include('clients.blocks.footerr')
     </footer>
 </body>
 @yield('js')

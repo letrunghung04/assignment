@@ -6,6 +6,6 @@
         <a class="nav-link text-black fs-4 fw-bold" href="{{route('tai_khoan.index')}}">Tài khoản</a>
         <a class="nav-link text-black fs-4 fw-bold" href="">Đơn hàng</a>
         <a class="nav-link text-black fs-4 fw-bold" href="">Thống kê</a>
-        <a class="nav-link text-black fs-4 fw-bold" href="">Website</a>
+        <a class="nav-link text-black fs-4 fw-bold" href="{{route('home.index')}}">Website</a>
     </div>
 </nav>

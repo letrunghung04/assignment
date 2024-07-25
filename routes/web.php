@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admins\DanhMucController;
 use App\Http\Controllers\Admins\SanPhamController;
 use App\Http\Controllers\Admins\TaiKhoanController;
+use App\Http\Controllers\Clients\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,4 @@ Route::get('/', function () {
 Route::resource('san_pham', SanPhamController::class);
 Route::resource('danh_muc', DanhMucController::class);
 Route::resource('tai_khoan', TaiKhoanController::class);
+Route::resource('home', HomeController::class);
