@@ -54,7 +54,9 @@ class DanhMucController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $title = "Sửa danh mục";
+        $danhMuc = DanhMuc::findOrFail($id);
+        return view('admins.danhmuc.update', compact('title', 'danhMuc'));
     }
 
     /**
@@ -62,14 +64,26 @@ class DanhMucController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if($request->isMethod('PUT')){
+            $params = $request->except('_token', '_method');
+            $sanPham = DanhMuc::findOrFail($id);
+            $sanPham->update($params);
+        }
+        return redirect()->route('danh_muc.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        //
+        if ($request->isMethod('DELETE')) {
+    
+            $danhMuc = DanhMuc::query()->findOrFail($id);
+
+            $danhMuc->delete();
+
+            return redirect()->route('danh_muc.index')->with('success', 'Xóa sản phầm thành công!');
+        }
     }
 }

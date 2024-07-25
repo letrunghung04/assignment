@@ -46,7 +46,7 @@
 
                 <div class="mb-3">
                     <label for="" class="form-label">Ngày nhập</label>
-                    <input type="date" value="{{$sanPham->ngay_nhap}}" class="form-control" name="ngay_nhap">
+                    <input type="date" value="{{$sanPham->ngay_nhap}}" class="form-control" name="ngay_nhap" required>
                 </div>
 
                 <div class="mb-3">
@@ -56,8 +56,8 @@
 
                 <div class="mb-3">
                     <label for="" class="form-label">Danh mục</label>
-                    <select name="danh_muc_id">
-                        <option selected>Chọn danh mục</option>
+                    <select name="danh_muc_id" required>
+                        <option value="" selected>Chọn danh mục</option>
                         @foreach ($listDanhMuc as $item)
                             <option value="{{ $item->id }}">{{ $item->ten_danh_muc }}</option>
                         @endforeach
@@ -65,8 +65,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="" class="form-label">Trạng thái</label>
-                    <select name="trang_thai">
-                        <option selected>Trạng thái của sản phẩm</option>
+                    <select name="trang_thai" required>
+                        <option value="" selected>Trạng thái của sản phẩm</option>
                         <option value="0">Hết hàng</option>
                         <option value="1">Còn hàng</option>
                     </select>

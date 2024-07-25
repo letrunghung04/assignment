@@ -18,4 +18,10 @@ class DanhMuc extends Model
     public function createDanhMuc($data){
         DB::table('danh_mucs')->insert($data);
     }
+    
+    protected $table = 'danh_mucs';
+    protected $fillable = [
+        'ten_danh_muc',
+        'mo_ta'
+    ];
 }

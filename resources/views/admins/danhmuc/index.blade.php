@@ -21,7 +21,6 @@
             <thead>
                 <tr>
                     <th>Stt</th>
-                    <th>Mã danh mục</th>
                     <th>Tên danh mục</th>
                     <th>Mô tả</th>
                     <th style="width: 1px;" class="text-nowrap">
@@ -33,12 +32,16 @@
                 @foreach ($listDanhMuc as $index => $item)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $item->id }}</td>
                         <td>{{ $item->ten_danh_muc }}</td>
                         <td>{{ $item->mo_ta }}</td>
                         <td style="width: 1px;" class="text-nowrap">
-                            <a class="btn btn-warning btn-sm" href="">Sửa</a>
-                            <a class="btn btn-danger btn-sm" href="">Xoá</a>
+                            <a class="btn btn-warning btn-sm" href="{{route('danh_muc.edit', $item->id)}}">Sửa</a>
+                            <form action="{{ route('danh_muc.destroy', $item->id) }}" method="POST"
+                                class="d-inline" onsubmit="return confirm('Bạn có đồng ý xóa không?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm">Xóa</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
