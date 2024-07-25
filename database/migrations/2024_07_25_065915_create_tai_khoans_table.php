@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tai_khoans', function (Blueprint $table) {
             $table->id();
-            $table->string('ho_ten',50);
+            $table->string('ho_ten', 50);
             $table->text('anh_dai_dien')->nullable();
             $table->date('ngay_sinh');
             $table->string('email')->unique();
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('mat_khau');
             $table->unsignedBigInteger('chuc_vu_id');
             $table->boolean('trang_thai')->default(0);
+            $table->foreign('chuc_vu_id')->references('id')->on('chuc_vus')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -63,8 +63,13 @@
                         <td class="vertical">{{ $item->trang_thai == 0 ? 'Hết hàng' : 'Còn hàng' }}</td>
                         <td class="cnang" style="width: 1px;" class="text-nowrap">
                             <a class="btn btn-primary btn-sm" href="">Xem</a>
-                            <a class="btn btn-warning btn-sm" href="">Sửa</a>
-                            <a class="btn btn-danger btn-sm" href="">Xoá</a>
+                            <a class="btn btn-warning" href="{{route('san_pham.edit', $item->id)}}">Sửa</a>
+                            <form action="{{ route('san_pham.destroy', $item->id) }}" method="POST"
+                                class="d-inline" onsubmit="return confirm('Bạn có đồng ý xóa không?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm">Xóa</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
